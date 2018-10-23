@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="350dp"
+    android:layout_height="match_parent"
+    android:layout_gravity="center_horizontal"
+    android:orientation="vertical"
+    tools:context=".MainActivity"
+    >
+    <LinearLayout style="@style/buttons">
+        <EditText
+            android:id="@+id/etSearch"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:hint="N° à chercher"
+            />
+        <ImageView
+            style="@style/button_picture"
+            android:src="@drawable/bt1_search"
+            android:onClick="btSearch"
+            />
+    </LinearLayout>
+    <View style="@style/line" />
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:columnCount="2"
+        >
+        <TextView style="@style/label" android:text="N° département :" />
+        <EditText android:id="@+id/etNoDept" style="@style/input" android:inputType="" />
+
+        <TextView style="@style/label" android:text="N° région :" />
+        <EditText android:id="@+id/etNoRegion" style="@style/input" />
+
+        <TextView style="@style/label" android:text="Nom :" />
+        <EditText android:id="@+id/etNom" style="@style/input" />
+
+        <TextView style="@style/label" android:text="Nom standard :" />
+        <EditText android:id="@+id/etNomStd" style="@style/input" />
+
+        <TextView style="@style/label" android:text="Surface : " />
+        <EditText android:id="@+id/etSurface" style="@style/input" />
+
+        <TextView style="@style/label" android:text="Date de création :" />
+        <EditText android:id="@+id/etDateCreation" style="@style/input" />
+
+        <TextView style="@style/label" android:text="Chef-lieu : " />
+        <EditText android:id="@+id/etChefLieu" style="@style/input" />
+
+        <TextView style="@style/label" android:text="URL :" />
+        <EditText android:id="@+id/etUrlWiki" style="@style/input" />
+    </GridLayout>
+
+    <LinearLayout style="@style/buttons">
+        <ImageView style="@style/button_picture"
+            android:src="@drawable/bt1_cancel"
+            android:onClick="btClear"
+            />
+        <ImageView style="@style/button_picture"
+            android:src="@drawable/bt1_delete"
+            android:onClick="btDelete"
+            />
+        <ImageView style="@style/button_picture"
+            android:src="@drawable/bt1_add"
+            android:onClick="btInsert"
+            />
+        <ImageView style="@style/button_picture"
+            android:src="@drawable/bt1_save"
+            android:onClick="btUpdate"
+            />
+    </LinearLayout>
+    <Button
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="Supprimer DB"
+        android:onClick="deleteDB"
+        android:visibility="visible"
+        />
+</LinearLayout>
