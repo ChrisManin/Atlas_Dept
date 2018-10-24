@@ -102,18 +102,18 @@ public class Departement {
 
     public void select(String no) throws Exception {
         String[] colonnes = {"no_dept", "no_region", "nom", "nom_std", "surface", "date_creation", "chef_lieu", "url_wiki"};
-        String critere = "N° département = " + noDept;
+        String critere = "no_dept = '" + no + "'";
         Cursor cursor = db.query("departements", colonnes, critere, null, null, null, null);
         if (cursor.getCount() > 0) {
             cursor.moveToFirst();
-            noDept = cursor.getString(0);
-            noRegion = cursor.getInt(1);
-            nom = cursor.getString(2);
-            nomStd = cursor.getString(3);
-            surface = cursor.getInt(4);
-            dateCreation = cursor.getString(5);
-            chefLieu = cursor.getString(6);
-            urlWiki = cursor.getString(7);
+            setNoDept(cursor.getString(0));
+            setNoRegion(Integer.parseInt(cursor.getString(1)));
+            setNom(cursor.getString(2));
+            setNomStd(cursor.getString(3));
+            setSurface(Integer.parseInt(cursor.getString(4)));
+            setDateCreation(cursor.getString(5));
+            setChefLieu(cursor.getString(6));
+            setUrlWiki(cursor.getString(7));
         } else {
             throw new EmptyStackException();
         }
@@ -128,8 +128,8 @@ public class Departement {
 
     public void delete() throws Exception {
         if (!noDept.isEmpty()){
-            String critere = "Numéro de département = " + noDept;
-            db.delete("contacts", critere, null);
+            String critere = "no_dept = " + noDept;
+            db.delete("departements", critere, null);
         } else {
             throw new EmptyStackException();
         }
@@ -137,7 +137,7 @@ public class Departement {
 
     public void update() throws Exception {
         ContentValues values = new ContentValues();
-        values.put("no_dept", noDept);
+
         values.put("no_region", noRegion);
         values.put("nom", nom);
         values.put("nom_std", nomStd);
@@ -147,7 +147,7 @@ public class Departement {
         values.put("url_wiki", urlWiki);
 
         if (!noDept.equals("")) {
-            String critere = "Numéro de département = " + noDept;
+            String critere = "no_dept = " + noDept;
             db.update("departements", values, critere, null);                //insert INTO contacts SET nom= "...", tel="..."
         } else {
             throw new EmptyStackException();
